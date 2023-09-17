@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat privé</title>
+</head>
+<body>
+    <h1>Chat privé</h1>
+    
+    <!-- Div pour afficher les messages -->
+    <div id="chatMessages"></div>
+    
+    <!-- Formulaire pour envoyer un message -->
+    <form id="chatForm">
+        <input type="text" id="messageInput" placeholder="Tapez votre message">
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <!-- Ajoutez un élément pour les notifications de déconnexion -->
+    <div id="disconnectNotification" style="display: none;">
+        <p>Un utilisateur a quitté la salle.</p>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const socket = io();
+
+        // Écoutez l'événement "messageReceived" pour afficher les messages reçus
+        socket.on('messageReceived', (message) => {
+            const chatMessages = $('#chatMessages');
+            chatMessages.append(`<p>${message.sender}: ${message.text}</p>`);
+        });
+
+
+        // Gérez l'envoi de messages
+        $('#chatForm').submit((e) => {
+            e.preventDefault();
+            const messageInput = $('#messageInput');
+            const message = messageInput.val().trim();
+            
+            if (message !== '') {
+                console.log('Message envoyé :', message); // Ajoutez cette ligne pour vérifier
+                socket.emit('sendMessage', message);
+                messageInput.val('');
+            }
+        });
+
+
+    </script>
+</body>
+</html>

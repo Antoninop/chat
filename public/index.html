@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchmaking App</title>
+</head>
+<body>
+    <h1>Matchmaking App</h1>
+    <input type="text" id="Username" placeholder="Saisir Pseudo"><br><br><br>
+    <button id="searchBtn">Rechercher un partenaire</button>
+
+    <!-- Ajoutez un élément pour le chat privé -->
+    <div id="chatContainer" style="display: none;">
+        <h2>Chat privé</h2>
+        <div id="chatMessages"></div>
+        <input type="text" id="messageInput" placeholder="Tapez votre message">
+        <button id="sendMessageBtn">Envoyer</button>
+        <button id="leaveRoomBtn">Quitter la salle</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const socket = io();
+        let roomName = null;
+
+        // Gérez le clic sur le bouton "Rechercher un partenaire"
+        $('#searchBtn').click(() => {
+            const username = $('#Username').val(); // Récupérez le pseudo de l'utilisateur
+            socket.emit('searchPartner', username); // Envoyez le pseudo au serveur
+        });
+
+
+
+        // Écoutez l'événement "partnerFound" pour rejoindre la salle et afficher le chat
+        socket.on('partnerFound', (room) => {
+            roomName = room;
+            console.log('Match trouvé! Vous êtes dans la salle: ' + roomName);
+
+            // Masquez le bouton de recherche et affichez le chat
+            $('#searchBtn').hide();
+            $('#Username').hide();
+            $('#chatContainer').show();
+        });
+
+        // Écoutez l'événement "waiting" pour indiquer que vous attendez un partenaire
+        socket.on('waiting', () => {
+            console.log('En attente d\'un partenaire...');
+        });
+
+        // Gérez l'envoi de messages
+        const chatMessages = $('#chatMessages');
+        const messageInput = $('#messageInput');
+        const sendMessageBtn = $('#sendMessageBtn');
+        const leaveRoomBtn = $('#leaveRoomBtn');
+
+        sendMessageBtn.click(() => {
+            const message = messageInput.val();
+            if (message.trim() !== '') {
+                socket.emit('sendMessage', message);
+                messageInput.val('');
+                console.log('Message envoyé: ' + message);
+            }
+        });
+
+        // Écoutez l'événement "messageReceived" pour afficher les messages reçus
+        socket.on('messageReceived', (message) => {
+            console.log('Message reçu de ' + message.sender + ': ' + message.text);
+            const chatMessages = $('#chatMessages');
+            chatMessages.append(`<p>${message.sender}: ${message.text}</p>`); // Utilisez "message.sender" pour afficher le pseudo
+        });
+
+
+
+        // Gérez le clic sur le bouton "Quitter la salle"
+        leaveRoomBtn.click(() => {
+            if (roomName) {
+                socket.emit('leaveRoom');
+                roomName = null;
+
+                // Masquez le chat et réaffichez le bouton de recherche
+                $('#chatContainer').hide();
+                $('#searchBtn').show();
+            }
+        });
+    </script>
+</body>
+</html>
