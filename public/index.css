@@ -1,0 +1,32 @@
+.welcome-container{
+    width: 60rem;
+    height: 35rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 2rem;
+}
+
+.welcome-title{
+    font-size: 4rem;
+    display: flex;
+    justify-content: start;
+}
+
+.pseudo-input{
+    width: 20rem;
+    height: 3rem;
+    font-size:2rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.3rem;
+}
+
+.topTitlePseudo{
+    font-size: 2rem;
+}
+
+#searchBtn{
+    justify-self: flex-end;
+}

@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="index.css" rel="stylesheet" />
+    <link href="main.css" rel="stylesheet" />
     <title>Matchmaking App</title>
 </head>
 <body>
-    <h1>Matchmaking App</h1>
-    <input type="text" id="Username" placeholder="Saisir Pseudo"><br><br><br>
-    <button id="searchBtn">Rechercher un partenaire</button>
-
+    
+    <section class="welcome-container">
+        <p class="welcome-title">Titre</p>
+        <p class="topTitlePseudo">Choisisez un surnom</p>
+        <input type="text" id="Username" placeholder="Saisir Pseudo" class="pseudo-input">
+        <button id="searchBtn">Rechercher un partenaire</button>
+    </section>
+    
     <!--éléments pour le chat privé -->
     <div id="chatContainer" style="display: none;">
         <h2>Chat privé</h2>

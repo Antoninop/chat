@@ -1,0 +1,17 @@
+html{
+    font-size: 12px;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: #004225;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chatMessages{
+    font-size: 2.5rem;
+    color: #FFB000;
+}
