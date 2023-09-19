@@ -2,16 +2,44 @@ html{
     font-size: 12px;
 }
 
-body{
-    width: 100vw;
-    height: 100vh;
-    background-color: #004225;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #chatMessages{
     font-size: 2.5rem;
     color: #FFB000;
+}
+
+.wrapper { 
+    height: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(274deg, #7ec9e6, #57d9c9, #7ce098, #fabf4d, #f18d52, #e95758, #f583b4, #cb88ef, #8669d6, #5381e8);    
+    background-size: 8000% 8000%; /* Augmentez la valeur pour ralentir davantage */
+    -webkit-animation: rainbow 120s ease-in-out infinite; /* Utilisation de l'ease-in-out */
+    -moz-animation: rainbow 120s ease-in-out infinite; /* Utilisation de l'ease-in-out */
+    -o-animation: rainbow 120s ease-in-out infinite; /* Utilisation de l'ease-in-out */
+    animation: rainbow 120s ease-in-out infinite; /* Utilisation de l'ease-in-out */
+}
+
+@-webkit-keyframes rainbow {
+    0% { background-position: 0% 82% }
+    50% { background-position: 100% 19% }
+    100% { background-position: 0% 82% }
+}
+@-moz-keyframes rainbow {
+    0% { background-position: 0% 82% }
+    50% { background-position: 100% 19% }
+    100% { background-position: 0% 82% }
+}
+@-o-keyframes rainbow {
+    0% { background-position: 0% 82% }
+    50% { background-position: 100% 19% }
+    100% { background-position: 0% 82% }
+}
+@keyframes rainbow { 
+    0% { background-position: 0% 82% }
+    50% { background-position: 100% 19% }
+    100% { background-position: 0% 82% }
 }

@@ -3,30 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="index.css" rel="stylesheet" />
-    <link href="main.css" rel="stylesheet" />
-    <title>Matchmaking App</title>
+    <title>chat App</title>
 </head>
 <body>
-    
-<div class="wrapper">
 
-    <section class="welcome-container">
-        <p class="welcome-title">Titre</p>
-        <p class="topTitlePseudo">Choisisez un surnom</p>
-        <input type="text" id="Username" placeholder="Saisir Pseudo" class="pseudo-input">
-        <button id="searchBtn">Rechercher un partenaire</button>
-    </section>
-    
     <!--éléments pour le chat privé -->
-    <div id="chatContainer" style="display: none;">
+    <div id="chatContainer">
         <h2>Chat privé</h2>
         <div id="chatMessages"></div>
         <input type="text" id="messageInput" placeholder="Tapez votre message">
         <button id="sendMessageBtn">Envoyer</button>
         <button id="leaveRoomBtn">Quitter la salle</button>
     </div>
-</div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -11,10 +11,9 @@ socket.on('partnerFound', (room) => {
     roomName = room;
     console.log('Match trouvé! Vous êtes dans la salle: ' + roomName);
 
-    $('#searchBtn').hide();
-    $('#Username').hide();
-    $('#chatContainer').show();
+    window.location.href = 'chat.html';
 });
+
 
 socket.on('waiting', () => {
     console.log('En attente d\'un partenaire...');
