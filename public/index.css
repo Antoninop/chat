@@ -1,4 +1,5 @@
-.welcome-container{
+.welcome-container {
+    position: relative;
     width: 60rem;
     height: 35rem;
     background-color: white;
@@ -8,25 +9,40 @@
     border-radius: 2rem;
 }
 
-.welcome-title{
+.welcome-title {
     font-size: 4rem;
     display: flex;
     justify-content: start;
-}
-
-.pseudo-input{
-    width: 20rem;
-    height: 3rem;
-    font-size:2rem;
-    display: flex;
-    align-items: center;
-    border-radius: 0.3rem;
 }
 
 .topTitlePseudo{
     font-size: 2rem;
 }
 
-#searchBtn{
-    justify-self: flex-end;
+.pseudo-input {
+    width: 20rem;
+    height: 3rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.3rem;
+}
+
+
+#searchBtn {
+    position: absolute;
+    bottom: 1rem; /* Ajustez la valeur selon votre préférence */
+    background-color: #3498db; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    border: none; /* Supprime la bordure par défaut */
+    padding: 15px 20px; /* Espacement interne */
+    font-size: 1.5rem; /* Taille de police */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur au survol */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition fluide */
+}
+
+#searchBtn:hover {
+    background-color: #2980b9; /* Couleur de fond au survol */
+    transform: scale(1.05); /* Légère mise à l'échelle au survol */
 }
